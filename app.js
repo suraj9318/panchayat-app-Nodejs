@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended : true}))
 app.use("/uploads", express.static("uploads"))
 
 // Connection String in env file
-// MONGO = mongodb+srv://surajmishra9318:lkprgr1TjSiqd0KM@cluster0.wq1xvor.mongodb.net/Panchayat?retryWrites=true&w=majority
+const connectionString = "mongodb+srv://surajmishra9318:lkprgr1TjSiqd0KM@cluster0.wq1xvor.mongodb.net/Panchayat?retryWrites=true&w=majority"
 
 // middleware
 app.use(express.json())
@@ -24,7 +24,7 @@ const port = 5000;
 
 const start  = async() =>{
     try{
-        await connectDB(process.env.MONGO);
+        await connectDB(connectionString);
         app.listen(port,console.log(`server is listening on port ${port}...`))
     }catch(err){
         console.log(err)

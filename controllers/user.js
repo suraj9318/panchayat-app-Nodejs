@@ -18,9 +18,10 @@ const userRegister = async(req,res)=>{
 
 const userLogin = async(req,res)=>{
     try {
-        console.log(req.body)
         var data = await CitizenUser.findOne({ mobile: req.body.mobile })
+        console.log(data)
         if(data){
+            
             if (req.body.password === data.password) {
                 res.status(200).json({ result: "success", data: data, message: "Public User Login" })
             }
@@ -42,9 +43,9 @@ const userLogin = async(req,res)=>{
 const officialUserLogin = async(req,res)=>{
     try {
         var data = await OfficialUser.findOne({ username: req.body.username })
-        console.log(data);
         if(data){
             if (req.body.password === data.password) {
+               
                 res.status(200).json({ result: "success", data: data, message: "Official User Login" })
             }
             else{
