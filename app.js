@@ -11,7 +11,8 @@ app.use(bodyParser.json({limit: '50mb'}))
 app.use(bodyParser.urlencoded({extended : true}))
 app.use("/uploads", express.static("uploads"))
 
-
+// Connection String in env file
+// MONGO = mongodb+srv://surajmishra9318:lkprgr1TjSiqd0KM@cluster0.wq1xvor.mongodb.net/Panchayat?retryWrites=true&w=majority
 
 // middleware
 app.use(express.json())
