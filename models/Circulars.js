@@ -4,7 +4,6 @@ const CircularSchema = new mongoose.Schema({
     circularNumber: {
         type: Number,
         required : true,
-        unique: true
     },
     subject: {
         type : String,

@@ -11,10 +11,6 @@ app.use(bodyParser.json({limit: '50mb'}))
 app.use(bodyParser.urlencoded({extended : true}))
 app.use("/uploads", express.static("uploads"))
 
-// Connection String in env file
-const connectionString = "mongodb+srv://surajmishra9318:lkprgr1TjSiqd0KM@cluster0.wq1xvor.mongodb.net/Panchayat?retryWrites=true&w=majority"
-
-// middleware
 app.use(express.json())
 // routes
 app.use('/api/v1/',user);
@@ -24,7 +20,7 @@ const port = 5000;
 
 const start  = async() =>{
     try{
-        await connectDB(connectionString);
+        await connectDB(process.env.MONGO);
         app.listen(port,console.log(`server is listening on port ${port}...`))
     }catch(err){
         console.log(err)
