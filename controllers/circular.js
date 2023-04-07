@@ -4,7 +4,6 @@ const  Circular = require('../models/Circulars')
 
 const addCircular = async(req,res)=>{
     try{
-        console.log(req.body);
         var data = new Circular(req.body)
         if (req.file)
             data.file = req.file.filename
@@ -17,7 +16,7 @@ const addCircular = async(req,res)=>{
 
 const getCircular = async (req, res) => {
     try {
-        var data = await Circular.find().sort({ _id: -1 })
+        var data = await Circular.find();
         if(data.length > 0){
             res.status(200).json({ result: "success", data: data})
         }else{

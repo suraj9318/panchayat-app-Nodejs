@@ -4,6 +4,13 @@ const CircularSchema = new mongoose.Schema({
     circularNumber: {
         type: Number,
         required : true,
+        validate: {
+        validator: function(v) {
+            return /^.*(?=.{5,}).*$/.test(v);
+        },
+        message: props => `Please enter at least 5 digit in circular number`
+        },
+        
     },
     subject: {
         type : String,
@@ -34,7 +41,7 @@ const CircularSchema = new mongoose.Schema({
     },
     file: {
         type : String,
-        required : true,
+        required : [true, 'A pdf file is requied'],
     },
 
 })

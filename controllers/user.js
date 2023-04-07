@@ -4,7 +4,6 @@ const  OfficialUser= require('../models/OfficialUser')
 
 const userRegister = async(req,res)=>{
     try{
-        console.log(req.body);
         var data = new CitizenUser(req.body)
         if (req.file)
             data.photo = req.file.filename
@@ -19,7 +18,6 @@ const userRegister = async(req,res)=>{
 const userLogin = async(req,res)=>{
     try {
         var data = await CitizenUser.findOne({ mobile: req.body.mobile })
-        console.log(data)
         if(data){
             
             if (req.body.password === data.password) {
